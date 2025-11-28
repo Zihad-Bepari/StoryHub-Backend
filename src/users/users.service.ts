@@ -22,12 +22,6 @@ export class UsersService {
     return await this.prisma.client.users.create({ data: dto });
    }
 
-
-  async justCheck() {
-    return 'decorate success';
-  }
-
-
   async findAll() {
     const users = await this.prisma.client.users.findMany();
     console.log('All users fetched:', users.length);
@@ -35,14 +29,12 @@ export class UsersService {
   }
 
   async findOne(id: number) {
-        console.log("get by id : ");
     const user = await this.prisma.client.users.findUnique({ where: { id } });
     if (!user) throw new NotFoundException(`User with ID ${id} not found`);
     return user;
   }
 
  async update(id: number, updateUserDto: UpdateUserDto) {
-          console.log("Update by id : ");
     const userExists = await this.prisma.client.users.findUnique({ where: { id } });
     if (!userExists) throw new NotFoundException(`User with ID ${id} not found`);
 

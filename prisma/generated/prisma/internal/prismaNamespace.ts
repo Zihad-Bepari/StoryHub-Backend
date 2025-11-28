@@ -384,6 +384,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
+  CreatePost: 'CreatePost',
   Users: 'Users'
 } as const
 
@@ -400,10 +401,84 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "users"
+    modelProps: "createPost" | "users"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
+    CreatePost: {
+      payload: Prisma.$CreatePostPayload<ExtArgs>
+      fields: Prisma.CreatePostFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CreatePostFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreatePostPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CreatePostFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreatePostPayload>
+        }
+        findFirst: {
+          args: Prisma.CreatePostFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreatePostPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CreatePostFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreatePostPayload>
+        }
+        findMany: {
+          args: Prisma.CreatePostFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreatePostPayload>[]
+        }
+        create: {
+          args: Prisma.CreatePostCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreatePostPayload>
+        }
+        createMany: {
+          args: Prisma.CreatePostCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CreatePostCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreatePostPayload>[]
+        }
+        delete: {
+          args: Prisma.CreatePostDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreatePostPayload>
+        }
+        update: {
+          args: Prisma.CreatePostUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreatePostPayload>
+        }
+        deleteMany: {
+          args: Prisma.CreatePostDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CreatePostUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CreatePostUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreatePostPayload>[]
+        }
+        upsert: {
+          args: Prisma.CreatePostUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CreatePostPayload>
+        }
+        aggregate: {
+          args: Prisma.CreatePostAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCreatePost>
+        }
+        groupBy: {
+          args: Prisma.CreatePostGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CreatePostGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CreatePostCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CreatePostCountAggregateOutputType> | number
+        }
+      }
+    }
     Users: {
       payload: Prisma.$UsersPayload<ExtArgs>
       fields: Prisma.UsersFieldRefs
@@ -517,6 +592,19 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const CreatePostScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  content: 'content',
+  likes: 'likes',
+  authorId: 'authorId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CreatePostScalarFieldEnum = (typeof CreatePostScalarFieldEnum)[keyof typeof CreatePostScalarFieldEnum]
+
+
 export const UsersScalarFieldEnum = {
   id: 'id',
   name: 'name',
@@ -581,20 +669,6 @@ export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaMod
 
 
 /**
- * Reference to a field of type 'Role'
- */
-export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role'>
-    
-
-
-/**
- * Reference to a field of type 'Role[]'
- */
-export type ListEnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role[]'>
-    
-
-
-/**
  * Reference to a field of type 'DateTime'
  */
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -605,6 +679,20 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'DateTime[]'
  */
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Role'
+ */
+export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role'>
+    
+
+
+/**
+ * Reference to a field of type 'Role[]'
+ */
+export type ListEnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role[]'>
     
 
 
@@ -700,6 +788,7 @@ export type PrismaClientOptions = ({
   omit?: GlobalOmitConfig
 }
 export type GlobalOmitConfig = {
+  createPost?: Prisma.CreatePostOmit
   users?: Prisma.UsersOmit
 }
 

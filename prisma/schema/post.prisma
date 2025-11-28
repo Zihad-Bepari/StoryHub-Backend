@@ -1,0 +1,11 @@
+model CreatePost {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  likes     Int      @default(0)
+  authorId  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("posts")
+}

@@ -6,9 +6,9 @@ services:
     container_name: postgres_db
     restart: always
     environment:
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_DB=${POSTGRES_DB}
+       POSTGRES_USER: postgres
+       POSTGRES_PASSWORD: 142139142
+       POSTGRES_DB: storyhub
     ports:
       - "5432:5432"
     volumes:

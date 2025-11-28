@@ -1,5 +1,5 @@
-model User {
-  id       String   @id @default(cuid())
+model Users {
+  id Int @id @default(autoincrement())
   name     String
   email    String   @unique
   password String

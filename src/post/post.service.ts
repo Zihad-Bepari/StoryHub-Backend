@@ -7,9 +7,41 @@ import { PrismaService } from '@/common/prisma/prisma.service';
 export class PostService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async create(createPostDto: CreatePostDto) {
-    return await this.prisma.client.createPost.create({ data: createPostDto });
-  }
+async create(userId: number, newPost: { title: string; content: string; likes?: number }) {
+    return await this.prisma.client.$transaction(async (prisma) => {
+        // 1️⃣ Create post in Post table
+        const post = await prisma.createPost.create({
+            data: {
+                title: newPost.title,
+                content: newPost.content,
+                likes: newPost.likes || 0,
+                authorId: userId
+            },
+        });
+
+        // 2️⃣ Update User table JSON + totalPosts
+        const user = await prisma.users.findUnique({ where: { id: userId } });
+        if (!user) throw new Error("User not found");
+
+        const postsArray = Array.isArray(user.posts) ? user.posts : [];
+
+        postsArray.push({
+            title: post.title,
+            content: post.content,
+            likes: post.likes
+        });
+
+        const updatedUser = await prisma.users.update({
+            where: { id: userId },
+            data: {
+                posts: postsArray,
+                totalPosts: postsArray.length
+            },
+        });
+
+        return { post, updatedUser };
+    });
+}
 
   async findAll() {
     return await this.prisma.client.createPost.findMany();

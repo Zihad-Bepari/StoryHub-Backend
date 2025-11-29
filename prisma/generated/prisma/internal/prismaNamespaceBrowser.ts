@@ -51,6 +51,7 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  Likes: 'Likes',
   CreatePost: 'CreatePost',
   Users: 'Users'
 } as const
@@ -69,6 +70,17 @@ export const TransactionIsolationLevel = {
 } as const
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const LikesScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  username: 'username',
+  postId: 'postId',
+  createdAt: 'createdAt'
+} as const
+
+export type LikesScalarFieldEnum = (typeof LikesScalarFieldEnum)[keyof typeof LikesScalarFieldEnum]
 
 
 export const CreatePostScalarFieldEnum = {
@@ -91,6 +103,8 @@ export const UsersScalarFieldEnum = {
   password: 'password',
   posts: 'posts',
   totalPosts: 'totalPosts',
+  likes: 'likes',
+  totalLikes: 'totalLikes',
   role: 'role',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

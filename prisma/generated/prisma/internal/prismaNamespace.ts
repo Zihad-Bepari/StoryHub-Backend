@@ -384,6 +384,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
+  Likes: 'Likes',
   CreatePost: 'CreatePost',
   Users: 'Users'
 } as const
@@ -401,10 +402,84 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "createPost" | "users"
+    modelProps: "likes" | "createPost" | "users"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
+    Likes: {
+      payload: Prisma.$LikesPayload<ExtArgs>
+      fields: Prisma.LikesFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.LikesFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LikesPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.LikesFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LikesPayload>
+        }
+        findFirst: {
+          args: Prisma.LikesFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LikesPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.LikesFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LikesPayload>
+        }
+        findMany: {
+          args: Prisma.LikesFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LikesPayload>[]
+        }
+        create: {
+          args: Prisma.LikesCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LikesPayload>
+        }
+        createMany: {
+          args: Prisma.LikesCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.LikesCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LikesPayload>[]
+        }
+        delete: {
+          args: Prisma.LikesDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LikesPayload>
+        }
+        update: {
+          args: Prisma.LikesUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LikesPayload>
+        }
+        deleteMany: {
+          args: Prisma.LikesDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.LikesUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.LikesUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LikesPayload>[]
+        }
+        upsert: {
+          args: Prisma.LikesUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LikesPayload>
+        }
+        aggregate: {
+          args: Prisma.LikesAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLikes>
+        }
+        groupBy: {
+          args: Prisma.LikesGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LikesGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.LikesCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LikesCountAggregateOutputType> | number
+        }
+      }
+    }
     CreatePost: {
       payload: Prisma.$CreatePostPayload<ExtArgs>
       fields: Prisma.CreatePostFieldRefs
@@ -592,6 +667,17 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const LikesScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  username: 'username',
+  postId: 'postId',
+  createdAt: 'createdAt'
+} as const
+
+export type LikesScalarFieldEnum = (typeof LikesScalarFieldEnum)[keyof typeof LikesScalarFieldEnum]
+
+
 export const CreatePostScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -612,6 +698,8 @@ export const UsersScalarFieldEnum = {
   password: 'password',
   posts: 'posts',
   totalPosts: 'totalPosts',
+  likes: 'likes',
+  totalLikes: 'totalLikes',
   role: 'role',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -820,6 +908,7 @@ export type PrismaClientOptions = ({
   omit?: GlobalOmitConfig
 }
 export type GlobalOmitConfig = {
+  likes?: Prisma.LikesOmit
   createPost?: Prisma.CreatePostOmit
   users?: Prisma.UsersOmit
 }

@@ -29,11 +29,13 @@ export type AggregateUsers = {
 export type UsersAvgAggregateOutputType = {
   id: number | null
   totalPosts: number | null
+  totalLikes: number | null
 }
 
 export type UsersSumAggregateOutputType = {
   id: number | null
   totalPosts: number | null
+  totalLikes: number | null
 }
 
 export type UsersMinAggregateOutputType = {
@@ -42,6 +44,7 @@ export type UsersMinAggregateOutputType = {
   email: string | null
   password: string | null
   totalPosts: number | null
+  totalLikes: number | null
   role: $Enums.Role | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -53,6 +56,7 @@ export type UsersMaxAggregateOutputType = {
   email: string | null
   password: string | null
   totalPosts: number | null
+  totalLikes: number | null
   role: $Enums.Role | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -65,6 +69,8 @@ export type UsersCountAggregateOutputType = {
   password: number
   posts: number
   totalPosts: number
+  likes: number
+  totalLikes: number
   role: number
   createdAt: number
   updatedAt: number
@@ -75,11 +81,13 @@ export type UsersCountAggregateOutputType = {
 export type UsersAvgAggregateInputType = {
   id?: true
   totalPosts?: true
+  totalLikes?: true
 }
 
 export type UsersSumAggregateInputType = {
   id?: true
   totalPosts?: true
+  totalLikes?: true
 }
 
 export type UsersMinAggregateInputType = {
@@ -88,6 +96,7 @@ export type UsersMinAggregateInputType = {
   email?: true
   password?: true
   totalPosts?: true
+  totalLikes?: true
   role?: true
   createdAt?: true
   updatedAt?: true
@@ -99,6 +108,7 @@ export type UsersMaxAggregateInputType = {
   email?: true
   password?: true
   totalPosts?: true
+  totalLikes?: true
   role?: true
   createdAt?: true
   updatedAt?: true
@@ -111,6 +121,8 @@ export type UsersCountAggregateInputType = {
   password?: true
   posts?: true
   totalPosts?: true
+  likes?: true
+  totalLikes?: true
   role?: true
   createdAt?: true
   updatedAt?: true
@@ -210,6 +222,8 @@ export type UsersGroupByOutputType = {
   password: string
   posts: runtime.JsonValue
   totalPosts: number
+  likes: runtime.JsonValue
+  totalLikes: number
   role: $Enums.Role
   createdAt: Date
   updatedAt: Date
@@ -245,6 +259,8 @@ export type UsersWhereInput = {
   password?: Prisma.StringFilter<"Users"> | string
   posts?: Prisma.JsonFilter<"Users">
   totalPosts?: Prisma.IntFilter<"Users"> | number
+  likes?: Prisma.JsonFilter<"Users">
+  totalLikes?: Prisma.IntFilter<"Users"> | number
   role?: Prisma.EnumRoleFilter<"Users"> | $Enums.Role
   createdAt?: Prisma.DateTimeFilter<"Users"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Users"> | Date | string
@@ -257,6 +273,8 @@ export type UsersOrderByWithRelationInput = {
   password?: Prisma.SortOrder
   posts?: Prisma.SortOrder
   totalPosts?: Prisma.SortOrder
+  likes?: Prisma.SortOrder
+  totalLikes?: Prisma.SortOrder
   role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -272,6 +290,8 @@ export type UsersWhereUniqueInput = Prisma.AtLeast<{
   password?: Prisma.StringFilter<"Users"> | string
   posts?: Prisma.JsonFilter<"Users">
   totalPosts?: Prisma.IntFilter<"Users"> | number
+  likes?: Prisma.JsonFilter<"Users">
+  totalLikes?: Prisma.IntFilter<"Users"> | number
   role?: Prisma.EnumRoleFilter<"Users"> | $Enums.Role
   createdAt?: Prisma.DateTimeFilter<"Users"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Users"> | Date | string
@@ -284,6 +304,8 @@ export type UsersOrderByWithAggregationInput = {
   password?: Prisma.SortOrder
   posts?: Prisma.SortOrder
   totalPosts?: Prisma.SortOrder
+  likes?: Prisma.SortOrder
+  totalLikes?: Prisma.SortOrder
   role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -304,6 +326,8 @@ export type UsersScalarWhereWithAggregatesInput = {
   password?: Prisma.StringWithAggregatesFilter<"Users"> | string
   posts?: Prisma.JsonWithAggregatesFilter<"Users">
   totalPosts?: Prisma.IntWithAggregatesFilter<"Users"> | number
+  likes?: Prisma.JsonWithAggregatesFilter<"Users">
+  totalLikes?: Prisma.IntWithAggregatesFilter<"Users"> | number
   role?: Prisma.EnumRoleWithAggregatesFilter<"Users"> | $Enums.Role
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Users"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Users"> | Date | string
@@ -315,6 +339,8 @@ export type UsersCreateInput = {
   password: string
   posts?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalPosts?: number
+  likes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  totalLikes?: number
   role?: $Enums.Role
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -327,6 +353,8 @@ export type UsersUncheckedCreateInput = {
   password: string
   posts?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalPosts?: number
+  likes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  totalLikes?: number
   role?: $Enums.Role
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -338,6 +366,8 @@ export type UsersUpdateInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   posts?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalPosts?: Prisma.IntFieldUpdateOperationsInput | number
+  likes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  totalLikes?: Prisma.IntFieldUpdateOperationsInput | number
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -350,6 +380,8 @@ export type UsersUncheckedUpdateInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   posts?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalPosts?: Prisma.IntFieldUpdateOperationsInput | number
+  likes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  totalLikes?: Prisma.IntFieldUpdateOperationsInput | number
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -362,6 +394,8 @@ export type UsersCreateManyInput = {
   password: string
   posts?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalPosts?: number
+  likes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  totalLikes?: number
   role?: $Enums.Role
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -373,6 +407,8 @@ export type UsersUpdateManyMutationInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   posts?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalPosts?: Prisma.IntFieldUpdateOperationsInput | number
+  likes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  totalLikes?: Prisma.IntFieldUpdateOperationsInput | number
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -385,6 +421,8 @@ export type UsersUncheckedUpdateManyInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   posts?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalPosts?: Prisma.IntFieldUpdateOperationsInput | number
+  likes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
+  totalLikes?: Prisma.IntFieldUpdateOperationsInput | number
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -397,6 +435,8 @@ export type UsersCountOrderByAggregateInput = {
   password?: Prisma.SortOrder
   posts?: Prisma.SortOrder
   totalPosts?: Prisma.SortOrder
+  likes?: Prisma.SortOrder
+  totalLikes?: Prisma.SortOrder
   role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -405,6 +445,7 @@ export type UsersCountOrderByAggregateInput = {
 export type UsersAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   totalPosts?: Prisma.SortOrder
+  totalLikes?: Prisma.SortOrder
 }
 
 export type UsersMaxOrderByAggregateInput = {
@@ -413,6 +454,7 @@ export type UsersMaxOrderByAggregateInput = {
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
   totalPosts?: Prisma.SortOrder
+  totalLikes?: Prisma.SortOrder
   role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -424,6 +466,7 @@ export type UsersMinOrderByAggregateInput = {
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
   totalPosts?: Prisma.SortOrder
+  totalLikes?: Prisma.SortOrder
   role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -432,6 +475,7 @@ export type UsersMinOrderByAggregateInput = {
 export type UsersSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   totalPosts?: Prisma.SortOrder
+  totalLikes?: Prisma.SortOrder
 }
 
 export type EnumRoleFieldUpdateOperationsInput = {
@@ -447,6 +491,8 @@ export type UsersSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   password?: boolean
   posts?: boolean
   totalPosts?: boolean
+  likes?: boolean
+  totalLikes?: boolean
   role?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -459,6 +505,8 @@ export type UsersSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   password?: boolean
   posts?: boolean
   totalPosts?: boolean
+  likes?: boolean
+  totalLikes?: boolean
   role?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -471,6 +519,8 @@ export type UsersSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   password?: boolean
   posts?: boolean
   totalPosts?: boolean
+  likes?: boolean
+  totalLikes?: boolean
   role?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -483,12 +533,14 @@ export type UsersSelectScalar = {
   password?: boolean
   posts?: boolean
   totalPosts?: boolean
+  likes?: boolean
+  totalLikes?: boolean
   role?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UsersOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "posts" | "totalPosts" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["users"]>
+export type UsersOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "posts" | "totalPosts" | "likes" | "totalLikes" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["users"]>
 
 export type $UsersPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Users"
@@ -500,6 +552,8 @@ export type $UsersPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     password: string
     posts: runtime.JsonValue
     totalPosts: number
+    likes: runtime.JsonValue
+    totalLikes: number
     role: $Enums.Role
     createdAt: Date
     updatedAt: Date
@@ -932,6 +986,8 @@ export interface UsersFieldRefs {
   readonly password: Prisma.FieldRef<"Users", 'String'>
   readonly posts: Prisma.FieldRef<"Users", 'Json'>
   readonly totalPosts: Prisma.FieldRef<"Users", 'Int'>
+  readonly likes: Prisma.FieldRef<"Users", 'Json'>
+  readonly totalLikes: Prisma.FieldRef<"Users", 'Int'>
   readonly role: Prisma.FieldRef<"Users", 'Role'>
   readonly createdAt: Prisma.FieldRef<"Users", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Users", 'DateTime'>

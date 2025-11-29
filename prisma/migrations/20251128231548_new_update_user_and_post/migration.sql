@@ -1,3 +1,0 @@
--- AlterTable
-ALTER TABLE "Users" ADD COLUMN     "posts" JSONB NOT NULL DEFAULT '[]',
-ADD COLUMN     "totalPosts" INTEGER NOT NULL DEFAULT 0;

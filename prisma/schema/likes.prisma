@@ -1,0 +1,9 @@
+model Likes {
+  id        Int       @id @default(autoincrement())
+  userId    Int       
+  username  String     
+  postId    Int 
+  createdAt DateTime  @default(now())
+
+  @@map("likes")
+}

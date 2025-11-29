@@ -5,6 +5,8 @@ model Users {
   password String
   posts    Json @default("[]")
   totalPosts Int      @default(0)
+  likes    Json @default("[]")
+  totalLikes Int      @default(0)
   role     Role     @default(USER)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

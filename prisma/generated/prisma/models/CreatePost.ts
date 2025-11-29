@@ -64,6 +64,7 @@ export type CreatePostCountAggregateOutputType = {
   content: number
   likes: number
   authorId: number
+  comments: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -108,6 +109,7 @@ export type CreatePostCountAggregateInputType = {
   content?: true
   likes?: true
   authorId?: true
+  comments?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -205,6 +207,7 @@ export type CreatePostGroupByOutputType = {
   content: string
   likes: number
   authorId: number
+  comments: runtime.JsonValue[]
   createdAt: Date
   updatedAt: Date
   _count: CreatePostCountAggregateOutputType | null
@@ -238,6 +241,7 @@ export type CreatePostWhereInput = {
   content?: Prisma.StringFilter<"CreatePost"> | string
   likes?: Prisma.IntFilter<"CreatePost"> | number
   authorId?: Prisma.IntFilter<"CreatePost"> | number
+  comments?: Prisma.JsonNullableListFilter<"CreatePost">
   createdAt?: Prisma.DateTimeFilter<"CreatePost"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CreatePost"> | Date | string
 }
@@ -248,6 +252,7 @@ export type CreatePostOrderByWithRelationInput = {
   content?: Prisma.SortOrder
   likes?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
+  comments?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -261,6 +266,7 @@ export type CreatePostWhereUniqueInput = Prisma.AtLeast<{
   content?: Prisma.StringFilter<"CreatePost"> | string
   likes?: Prisma.IntFilter<"CreatePost"> | number
   authorId?: Prisma.IntFilter<"CreatePost"> | number
+  comments?: Prisma.JsonNullableListFilter<"CreatePost">
   createdAt?: Prisma.DateTimeFilter<"CreatePost"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CreatePost"> | Date | string
 }, "id">
@@ -271,6 +277,7 @@ export type CreatePostOrderByWithAggregationInput = {
   content?: Prisma.SortOrder
   likes?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
+  comments?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.CreatePostCountOrderByAggregateInput
@@ -289,6 +296,7 @@ export type CreatePostScalarWhereWithAggregatesInput = {
   content?: Prisma.StringWithAggregatesFilter<"CreatePost"> | string
   likes?: Prisma.IntWithAggregatesFilter<"CreatePost"> | number
   authorId?: Prisma.IntWithAggregatesFilter<"CreatePost"> | number
+  comments?: Prisma.JsonNullableListFilter<"CreatePost">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"CreatePost"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"CreatePost"> | Date | string
 }
@@ -298,6 +306,7 @@ export type CreatePostCreateInput = {
   content: string
   likes?: number
   authorId: number
+  comments?: Prisma.CreatePostCreatecommentsInput | runtime.InputJsonValue[]
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -308,6 +317,7 @@ export type CreatePostUncheckedCreateInput = {
   content: string
   likes?: number
   authorId: number
+  comments?: Prisma.CreatePostCreatecommentsInput | runtime.InputJsonValue[]
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -317,6 +327,7 @@ export type CreatePostUpdateInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   likes?: Prisma.IntFieldUpdateOperationsInput | number
   authorId?: Prisma.IntFieldUpdateOperationsInput | number
+  comments?: Prisma.CreatePostUpdatecommentsInput | runtime.InputJsonValue[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -327,6 +338,7 @@ export type CreatePostUncheckedUpdateInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   likes?: Prisma.IntFieldUpdateOperationsInput | number
   authorId?: Prisma.IntFieldUpdateOperationsInput | number
+  comments?: Prisma.CreatePostUpdatecommentsInput | runtime.InputJsonValue[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -337,6 +349,7 @@ export type CreatePostCreateManyInput = {
   content: string
   likes?: number
   authorId: number
+  comments?: Prisma.CreatePostCreatecommentsInput | runtime.InputJsonValue[]
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -346,6 +359,7 @@ export type CreatePostUpdateManyMutationInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   likes?: Prisma.IntFieldUpdateOperationsInput | number
   authorId?: Prisma.IntFieldUpdateOperationsInput | number
+  comments?: Prisma.CreatePostUpdatecommentsInput | runtime.InputJsonValue[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -356,8 +370,24 @@ export type CreatePostUncheckedUpdateManyInput = {
   content?: Prisma.StringFieldUpdateOperationsInput | string
   likes?: Prisma.IntFieldUpdateOperationsInput | number
   authorId?: Prisma.IntFieldUpdateOperationsInput | number
+  comments?: Prisma.CreatePostUpdatecommentsInput | runtime.InputJsonValue[]
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type JsonNullableListFilter<$PrismaModel = never> =
+| Prisma.PatchUndefined<
+    Prisma.Either<Required<JsonNullableListFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableListFilterBase<$PrismaModel>>, 'path'>>,
+    Required<JsonNullableListFilterBase<$PrismaModel>>
+  >
+| Prisma.OptionalFlat<Omit<Required<JsonNullableListFilterBase<$PrismaModel>>, 'path'>>
+
+export type JsonNullableListFilterBase<$PrismaModel = never> = {
+  equals?: runtime.InputJsonValue[] | Prisma.ListJsonFieldRefInput<$PrismaModel> | null
+  has?: runtime.InputJsonValue | Prisma.JsonFieldRefInput<$PrismaModel> | null
+  hasEvery?: runtime.InputJsonValue[] | Prisma.ListJsonFieldRefInput<$PrismaModel>
+  hasSome?: runtime.InputJsonValue[] | Prisma.ListJsonFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
 }
 
 export type CreatePostCountOrderByAggregateInput = {
@@ -366,6 +396,7 @@ export type CreatePostCountOrderByAggregateInput = {
   content?: Prisma.SortOrder
   likes?: Prisma.SortOrder
   authorId?: Prisma.SortOrder
+  comments?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -402,6 +433,15 @@ export type CreatePostSumOrderByAggregateInput = {
   authorId?: Prisma.SortOrder
 }
 
+export type CreatePostCreatecommentsInput = {
+  set: runtime.InputJsonValue[]
+}
+
+export type CreatePostUpdatecommentsInput = {
+  set?: runtime.InputJsonValue[]
+  push?: runtime.InputJsonValue | runtime.InputJsonValue[]
+}
+
 
 
 export type CreatePostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -410,6 +450,7 @@ export type CreatePostSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   content?: boolean
   likes?: boolean
   authorId?: boolean
+  comments?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["createPost"]>
@@ -420,6 +461,7 @@ export type CreatePostSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   content?: boolean
   likes?: boolean
   authorId?: boolean
+  comments?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["createPost"]>
@@ -430,6 +472,7 @@ export type CreatePostSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   content?: boolean
   likes?: boolean
   authorId?: boolean
+  comments?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["createPost"]>
@@ -440,11 +483,12 @@ export type CreatePostSelectScalar = {
   content?: boolean
   likes?: boolean
   authorId?: boolean
+  comments?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type CreatePostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "content" | "likes" | "authorId" | "createdAt" | "updatedAt", ExtArgs["result"]["createPost"]>
+export type CreatePostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "content" | "likes" | "authorId" | "comments" | "createdAt" | "updatedAt", ExtArgs["result"]["createPost"]>
 
 export type $CreatePostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "CreatePost"
@@ -455,6 +499,7 @@ export type $CreatePostPayload<ExtArgs extends runtime.Types.Extensions.Internal
     content: string
     likes: number
     authorId: number
+    comments: runtime.JsonValue[]
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["createPost"]>
@@ -885,6 +930,7 @@ export interface CreatePostFieldRefs {
   readonly content: Prisma.FieldRef<"CreatePost", 'String'>
   readonly likes: Prisma.FieldRef<"CreatePost", 'Int'>
   readonly authorId: Prisma.FieldRef<"CreatePost", 'Int'>
+  readonly comments: Prisma.FieldRef<"CreatePost", 'Json[]'>
   readonly createdAt: Prisma.FieldRef<"CreatePost", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"CreatePost", 'DateTime'>
 }

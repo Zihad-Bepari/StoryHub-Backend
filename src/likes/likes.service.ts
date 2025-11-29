@@ -10,7 +10,6 @@ export class LikesService {
   async create(createLikeDto: CreateLikeDto) {
   const { userId, postId } = createLikeDto;
 
-  // Fetch user & post
   const user = await this.prisma.client.users.findUnique({
     where: { id: userId },
   });

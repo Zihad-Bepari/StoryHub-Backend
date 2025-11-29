@@ -89,6 +89,7 @@ export const CreatePostScalarFieldEnum = {
   content: 'content',
   likes: 'likes',
   authorId: 'authorId',
+  comments: 'comments',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

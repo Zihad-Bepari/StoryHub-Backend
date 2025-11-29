@@ -6,10 +6,11 @@ import { PrismaModule } from './common/prisma/prisma.module';
 import { UsersModule } from './users/users.module';
 import { PostModule } from './post/post.module';
 import { LikesModule } from './likes/likes.module';
+import { CommentModule } from './comment/comment.module';
 
 @Global()
 @Module({
-  imports: [AuthModule, PrismaModule, UsersModule, PostModule, LikesModule],
+  imports: [AuthModule, PrismaModule, UsersModule, PostModule, LikesModule, CommentModule],
   controllers: [AppController],
   providers: [AppService],
 })

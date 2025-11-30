@@ -10,10 +10,10 @@ model Users {
   role     Role     @default(USER)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  isblocked Boolean  @default(false)
 }
 
 enum Role {
   USER
   ADMIN
-  MODERATOR
 }

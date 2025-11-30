@@ -48,6 +48,7 @@ export type UsersMinAggregateOutputType = {
   role: $Enums.Role | null
   createdAt: Date | null
   updatedAt: Date | null
+  isblocked: boolean | null
 }
 
 export type UsersMaxAggregateOutputType = {
@@ -60,6 +61,7 @@ export type UsersMaxAggregateOutputType = {
   role: $Enums.Role | null
   createdAt: Date | null
   updatedAt: Date | null
+  isblocked: boolean | null
 }
 
 export type UsersCountAggregateOutputType = {
@@ -74,6 +76,7 @@ export type UsersCountAggregateOutputType = {
   role: number
   createdAt: number
   updatedAt: number
+  isblocked: number
   _all: number
 }
 
@@ -100,6 +103,7 @@ export type UsersMinAggregateInputType = {
   role?: true
   createdAt?: true
   updatedAt?: true
+  isblocked?: true
 }
 
 export type UsersMaxAggregateInputType = {
@@ -112,6 +116,7 @@ export type UsersMaxAggregateInputType = {
   role?: true
   createdAt?: true
   updatedAt?: true
+  isblocked?: true
 }
 
 export type UsersCountAggregateInputType = {
@@ -126,6 +131,7 @@ export type UsersCountAggregateInputType = {
   role?: true
   createdAt?: true
   updatedAt?: true
+  isblocked?: true
   _all?: true
 }
 
@@ -227,6 +233,7 @@ export type UsersGroupByOutputType = {
   role: $Enums.Role
   createdAt: Date
   updatedAt: Date
+  isblocked: boolean
   _count: UsersCountAggregateOutputType | null
   _avg: UsersAvgAggregateOutputType | null
   _sum: UsersSumAggregateOutputType | null
@@ -264,6 +271,7 @@ export type UsersWhereInput = {
   role?: Prisma.EnumRoleFilter<"Users"> | $Enums.Role
   createdAt?: Prisma.DateTimeFilter<"Users"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Users"> | Date | string
+  isblocked?: Prisma.BoolFilter<"Users"> | boolean
 }
 
 export type UsersOrderByWithRelationInput = {
@@ -278,6 +286,7 @@ export type UsersOrderByWithRelationInput = {
   role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isblocked?: Prisma.SortOrder
 }
 
 export type UsersWhereUniqueInput = Prisma.AtLeast<{
@@ -295,6 +304,7 @@ export type UsersWhereUniqueInput = Prisma.AtLeast<{
   role?: Prisma.EnumRoleFilter<"Users"> | $Enums.Role
   createdAt?: Prisma.DateTimeFilter<"Users"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Users"> | Date | string
+  isblocked?: Prisma.BoolFilter<"Users"> | boolean
 }, "id" | "email">
 
 export type UsersOrderByWithAggregationInput = {
@@ -309,6 +319,7 @@ export type UsersOrderByWithAggregationInput = {
   role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isblocked?: Prisma.SortOrder
   _count?: Prisma.UsersCountOrderByAggregateInput
   _avg?: Prisma.UsersAvgOrderByAggregateInput
   _max?: Prisma.UsersMaxOrderByAggregateInput
@@ -331,6 +342,7 @@ export type UsersScalarWhereWithAggregatesInput = {
   role?: Prisma.EnumRoleWithAggregatesFilter<"Users"> | $Enums.Role
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Users"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Users"> | Date | string
+  isblocked?: Prisma.BoolWithAggregatesFilter<"Users"> | boolean
 }
 
 export type UsersCreateInput = {
@@ -344,6 +356,7 @@ export type UsersCreateInput = {
   role?: $Enums.Role
   createdAt?: Date | string
   updatedAt?: Date | string
+  isblocked?: boolean
 }
 
 export type UsersUncheckedCreateInput = {
@@ -358,6 +371,7 @@ export type UsersUncheckedCreateInput = {
   role?: $Enums.Role
   createdAt?: Date | string
   updatedAt?: Date | string
+  isblocked?: boolean
 }
 
 export type UsersUpdateInput = {
@@ -371,6 +385,7 @@ export type UsersUpdateInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isblocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UsersUncheckedUpdateInput = {
@@ -385,6 +400,7 @@ export type UsersUncheckedUpdateInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isblocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UsersCreateManyInput = {
@@ -399,6 +415,7 @@ export type UsersCreateManyInput = {
   role?: $Enums.Role
   createdAt?: Date | string
   updatedAt?: Date | string
+  isblocked?: boolean
 }
 
 export type UsersUpdateManyMutationInput = {
@@ -412,6 +429,7 @@ export type UsersUpdateManyMutationInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isblocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UsersUncheckedUpdateManyInput = {
@@ -426,6 +444,7 @@ export type UsersUncheckedUpdateManyInput = {
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  isblocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UsersCountOrderByAggregateInput = {
@@ -440,6 +459,7 @@ export type UsersCountOrderByAggregateInput = {
   role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isblocked?: Prisma.SortOrder
 }
 
 export type UsersAvgOrderByAggregateInput = {
@@ -458,6 +478,7 @@ export type UsersMaxOrderByAggregateInput = {
   role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isblocked?: Prisma.SortOrder
 }
 
 export type UsersMinOrderByAggregateInput = {
@@ -470,6 +491,7 @@ export type UsersMinOrderByAggregateInput = {
   role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  isblocked?: Prisma.SortOrder
 }
 
 export type UsersSumOrderByAggregateInput = {
@@ -480,6 +502,10 @@ export type UsersSumOrderByAggregateInput = {
 
 export type EnumRoleFieldUpdateOperationsInput = {
   set?: $Enums.Role
+}
+
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
 }
 
 
@@ -496,6 +522,7 @@ export type UsersSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   role?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isblocked?: boolean
 }, ExtArgs["result"]["users"]>
 
 export type UsersSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -510,6 +537,7 @@ export type UsersSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   role?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isblocked?: boolean
 }, ExtArgs["result"]["users"]>
 
 export type UsersSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -524,6 +552,7 @@ export type UsersSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   role?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isblocked?: boolean
 }, ExtArgs["result"]["users"]>
 
 export type UsersSelectScalar = {
@@ -538,9 +567,10 @@ export type UsersSelectScalar = {
   role?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  isblocked?: boolean
 }
 
-export type UsersOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "posts" | "totalPosts" | "likes" | "totalLikes" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["users"]>
+export type UsersOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "posts" | "totalPosts" | "likes" | "totalLikes" | "role" | "createdAt" | "updatedAt" | "isblocked", ExtArgs["result"]["users"]>
 
 export type $UsersPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Users"
@@ -557,6 +587,7 @@ export type $UsersPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     role: $Enums.Role
     createdAt: Date
     updatedAt: Date
+    isblocked: boolean
   }, ExtArgs["result"]["users"]>
   composites: {}
 }
@@ -991,6 +1022,7 @@ export interface UsersFieldRefs {
   readonly role: Prisma.FieldRef<"Users", 'Role'>
   readonly createdAt: Prisma.FieldRef<"Users", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Users", 'DateTime'>
+  readonly isblocked: Prisma.FieldRef<"Users", 'Boolean'>
 }
     
 

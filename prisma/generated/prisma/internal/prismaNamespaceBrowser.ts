@@ -108,7 +108,8 @@ export const UsersScalarFieldEnum = {
   totalLikes: 'totalLikes',
   role: 'role',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  isblocked: 'isblocked'
 } as const
 
 export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]

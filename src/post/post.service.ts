@@ -9,7 +9,6 @@ export class PostService {
 
 async create(userId: number, newPost: { title: string; content: string; likes?: number }) {
     return await this.prisma.client.$transaction(async (prisma) => {
-        // 1️⃣ Create post in Post table
         const post = await prisma.createPost.create({
             data: {
                 title: newPost.title,
@@ -19,7 +18,6 @@ async create(userId: number, newPost: { title: string; content: string; likes?: 
             },
         });
 
-        // 2️⃣ Update User table JSON + totalPosts
         const user = await prisma.users.findUnique({ where: { id: userId } });
         if (!user) throw new Error("User not found");
 

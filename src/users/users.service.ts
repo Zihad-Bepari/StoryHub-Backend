@@ -21,6 +21,30 @@ export class UsersService {
 
     return await this.prisma.client.users.create({ data: dto });
    }
+   
+    async createBulk(users: CreateUserDto[]) {
+    const emails = users.map(u => u.email);
+
+    const existingUsers = await this.prisma.client.users.findMany({
+      where: { email: { in: emails } },
+      select: { email: true },
+    });
+
+    if (existingUsers.length > 0) {
+      const existingEmails = existingUsers.map(u => u.email);
+      throw new HttpException(
+        `These users already exist: ${existingEmails.join(', ')}`,
+        400,
+      );
+    }
+
+    const createdUsers = await this.prisma.client.users.createMany({
+      data: users,
+      skipDuplicates: true, 
+    });
+
+    return { success: true, count: createdUsers.count };
+  }
 
   async findAll() {
     const users = await this.prisma.client.users.findMany();

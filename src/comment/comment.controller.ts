@@ -17,7 +17,7 @@ export class CommentController {
 
    @Patch(':postId/:index')
   update(
-    @Param('postId', ParseIntPipe) postId: number,
+    @Param('postId', ParseIntPipe) postId: string,
     @Param('index', ParseIntPipe) index: number,
     @Body() updateCommentDto: UpdateCommentDto,
   ) {
@@ -26,7 +26,7 @@ export class CommentController {
 
   @Delete(':postId/:index')
   remove(
-    @Param('postId', ParseIntPipe) postId: number,
+    @Param('postId', ParseIntPipe) postId: string,
     @Param('index', ParseIntPipe) index: number,
   ) {
     return this.commentService.remove(postId, index);

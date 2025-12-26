@@ -3,8 +3,8 @@ import { IsNotEmpty, IsNumber } from "class-validator";
 export class CreateLikeDto {
     @IsNumber()
     @IsNotEmpty()
-    userId: number;
+    userId: string;
     @IsNumber()
     @IsNotEmpty()
-    postId: number;  
+    postId: string;  
 }

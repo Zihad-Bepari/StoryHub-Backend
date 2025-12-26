@@ -1,35 +1,45 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { AdminService } from './admin.service';
-import { CreateAdminDto } from './dto/create-admin.dto';
-import { UpdateAdminDto } from './dto/update-admin.dto';
+
 import { PrismaService } from '@/common/prisma/prisma.service';
+import { AdminService } from './admin.service';
 
 @Controller('admin')
 export class AdminController {
-  constructor(private readonly adminService: PrismaService) {}
+  constructor(
+         private readonly prisma: PrismaService,
+         private readonly adminService: AdminService,
+  ) {}
+ 
+ @Get()
+  findAll() {
+    return this.adminService.findAll();
+  }
+
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.adminService.findOne(id);
+  }
 
  @Patch('block/:id')
 blockUser(@Param('id') id: string) {
-  return this.adminService.client.users.update({
-    where: { id: Number(id) },
+  return this.prisma.client.users.update({
+    where: { id: id },
     data: { isblocked: true },
   });
 }
 
 @Patch('unblock/:id')
 unblockUser(@Param('id') id: string) {
-  return this.adminService.client.users.update({
-    where: { id: Number(id) },
+  return this.prisma.client.users.update({
+    where: { id: id },
     data: { isblocked: false },
   });
 }
 
-
-
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.adminService.client.createPost.delete({
-      where: { id: Number(id) },
+    return this.prisma.client.post.delete({
+      where: { id: id },
     });
   }
 

@@ -17,7 +17,7 @@ export class AuthService {
       where: { email: dto.email },
     });
     if (existingUser) {
-      throw new BadRequestException('Email already in use');
+      throw new BadRequestException('User already exist. please login.');
     }
     
     const hashedPassword = await bcrypt.hash(dto.password, 10);
@@ -50,7 +50,6 @@ export class AuthService {
         );
     }
     
-    //const hashedPassword = await bcrypt.hash(dto.password, 10);
     const passwordMatch = await bcrypt.compare(dto.password, user.password);
     if (!passwordMatch) {
       throw new HttpException(
@@ -58,6 +57,7 @@ export class AuthService {
               HttpStatus.BAD_REQUEST,
           );
     }
+    
     const token = jwt.sign(
     { userId: user.id, email: user.email },
     process.env.JWT_SECRET || 'StoryHub',

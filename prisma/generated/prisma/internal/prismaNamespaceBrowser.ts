@@ -52,7 +52,8 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   Likes: 'Likes',
-  CreatePost: 'CreatePost',
+  Payment: 'Payment',
+  Post: 'Post',
   Users: 'Users'
 } as const
 
@@ -83,7 +84,19 @@ export const LikesScalarFieldEnum = {
 export type LikesScalarFieldEnum = (typeof LikesScalarFieldEnum)[keyof typeof LikesScalarFieldEnum]
 
 
-export const CreatePostScalarFieldEnum = {
+export const PaymentScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  stripePaymentId: 'stripePaymentId',
+  amount: 'amount',
+  status: 'status',
+  createdAt: 'createdAt'
+} as const
+
+export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
+
+
+export const PostScalarFieldEnum = {
   id: 'id',
   title: 'title',
   content: 'content',
@@ -94,7 +107,7 @@ export const CreatePostScalarFieldEnum = {
   updatedAt: 'updatedAt'
 } as const
 
-export type CreatePostScalarFieldEnum = (typeof CreatePostScalarFieldEnum)[keyof typeof CreatePostScalarFieldEnum]
+export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
 
 
 export const UsersScalarFieldEnum = {

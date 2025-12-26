@@ -23,10 +23,15 @@ export * from './enums';
  */
 export type Likes = Prisma.LikesModel
 /**
- * Model CreatePost
+ * Model Payment
  * 
  */
-export type CreatePost = Prisma.CreatePostModel
+export type Payment = Prisma.PaymentModel
+/**
+ * Model Post
+ * 
+ */
+export type Post = Prisma.PostModel
 /**
  * Model Users
  * 

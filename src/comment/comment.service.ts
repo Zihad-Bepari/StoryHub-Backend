@@ -9,8 +9,8 @@ import { JsonValue } from '@prisma/client/runtime/client';
 export class CommentService {
   constructor(private readonly prisma:PrismaService) {}
   
-  async create(postId: number, dto: CommentWithoutPostId) {
-    const post = await this.prisma.client.createPost.findUnique({
+  async create(postId: string, dto: CommentWithoutPostId) {
+    const post = await this.prisma.client.post.findUnique({
       where: { id: postId },
     });
     if (!post) throw new NotFoundException('Post not found');
@@ -26,7 +26,7 @@ export class CommentService {
       ? [...(post.comments as Prisma.InputJsonValue[]), newComment]
       : [newComment];
 
-    await this.prisma.client.createPost.update({
+    await this.prisma.client.post.update({
       where: { id: postId },
       data: { comments: updatedComments },
     });
@@ -34,8 +34,8 @@ export class CommentService {
     return { message: 'Comment added successfully', comment: newComment };
   }
 
-  async update(postId: number, index: number, dto: UpdateCommentDto) {
-    const post = await this.prisma.client.createPost.findUnique({ where: { id: postId } });
+  async update(postId: string, index: number, dto: UpdateCommentDto) {
+    const post = await this.prisma.client.post.findUnique({ where: { id: postId } });
     if (!post) throw new NotFoundException('Post not found');
 
     if (!post.comments || !post.comments[index]) {
@@ -55,15 +55,15 @@ export class CommentService {
       updatedAt: new Date().toISOString(),
     };
 
-    await this.prisma.client.createPost.update({
+    await this.prisma.client.post.update({
       where: { id: postId },
       data: { comments: updatedComments },
     });
 
     return { message: 'Comment updated successfully', comment: updatedComments[index] };
   }
-  async remove(postId: number, index: number) {
-    const post = await this.prisma.client.createPost.findUnique({ where: { id: postId } });
+  async remove(postId: string, index: number) {
+    const post = await this.prisma.client.post.findUnique({ where: { id: postId } });
     if (!post) throw new NotFoundException('Post not found');
 
     if (!post.comments || !post.comments[index]) throw new NotFoundException('Comment not found');
@@ -71,7 +71,7 @@ export class CommentService {
     const deletedComment = post.comments[index];
     const updatedComments = (post.comments as Prisma.InputJsonValue[]).filter((_, i) => i !== index);
 
-    await this.prisma.client.createPost.update({
+    await this.prisma.client.post.update({
       where: { id: postId },
       data: { comments: updatedComments },
     });

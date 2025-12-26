@@ -1,0 +1,14 @@
+model Payment {
+  id              String        @id @default(uuid())
+  userId          String
+  stripePaymentId String @unique
+  amount          Float
+  status          PaymentStatus @default(PENDING)  
+  createdAt       DateTime      @default(now())
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCEEDED
+  FAILED
+}

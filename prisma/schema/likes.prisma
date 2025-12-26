@@ -1,8 +1,8 @@
 model Likes {
-  id        Int       @id @default(autoincrement())
-  userId    Int       
+  id        String    @id @default(uuid())
+  userId    String       
   username  String     
-  postId    Int 
+  postId    String 
   createdAt DateTime  @default(now())
 
   @@map("likes")

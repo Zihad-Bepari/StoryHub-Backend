@@ -1,5 +1,5 @@
 model Users {
-  id Int @id @default(autoincrement())
+  id         String   @id @default(uuid())
   name     String
   email    String   @unique
   password String
@@ -17,3 +17,4 @@ enum Role {
   USER
   ADMIN
 }
+

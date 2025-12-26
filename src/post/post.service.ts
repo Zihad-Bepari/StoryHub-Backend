@@ -23,10 +23,18 @@ export class PostService {
         createdAt: { gte: today, lt: tomorrow }
       }
     });
+   const author = await prisma.users.findUnique({
+      where: { id: authorId }, 
+      select: { email: true }, 
+    });
+
+    if (!author) throw new Error('User not found');
+
+    const authorEmail = author.email;
 
     const hasPayment = await prisma.payment.findFirst({
       where: {
-        userId: authorId, 
+        userId: authorEmail, 
         status: 'SUCCEEDED',
       }
     });

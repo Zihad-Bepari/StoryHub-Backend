@@ -8,69 +8,66 @@ export class PostService {
   constructor(private readonly prisma: PrismaService) {}
 
  async create(
-    userId: string,
-    newPost: { title: string; content: string; likes?: number }
-  ) {
-    return await this.prisma.client.$transaction(async (prisma) => {
+  authorId: string,
+  newPost: { title: string; content: string; likes?: number }
+) {
+  return await this.prisma.client.$transaction(async (prisma) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate() + 1);
 
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      const tomorrow = new Date(today);
-      tomorrow.setDate(today.getDate() + 1);
-
-      const postsToday = await prisma.post.count({
-        where: {
-          authorId: userId,
-          createdAt: { gte: today, lt: tomorrow }
-        }
-      });
-
-      if (postsToday >= 2) {
-        const subscription = await prisma.payment.findFirst({
-          where: {
-            userId,
-            status: 'SUCCEEDED',
-            createdAt: { gte: today } 
-          }
-        });
-
-        if (!subscription) {
-          throw new BadRequestException(
-            'You have reached 2 posts for today. Buy subscription to post more.'
-          );
-        }
+    const postsToday = await prisma.post.count({
+      where: {
+        authorId,
+        createdAt: { gte: today, lt: tomorrow }
       }
-
-      const post = await prisma.post.create({
-        data: {
-          title: newPost.title,
-          content: newPost.content,
-          likes: newPost.likes || 0,
-          authorId: userId
-        }
-      });
-
-      const user = await prisma.users.findUnique({ where: { id: userId } });
-      if (!user) throw new BadRequestException('User not found');
-
-      const postsArray = Array.isArray(user.posts) ? user.posts : [];
-      postsArray.push({
-        title: post.title,
-        content: post.content,
-        likes: post.likes
-      });
-
-      const updatedUser = await prisma.users.update({
-        where: { id: userId },
-        data: {
-          posts: postsArray,
-          totalPosts: postsArray.length
-        }
-      });
-
-      return { post, updatedUser };
     });
-  }
+
+    const hasPayment = await prisma.payment.findFirst({
+      where: {
+        userId: authorId, 
+        status: 'SUCCEEDED',
+      }
+    });
+
+    if (!hasPayment && postsToday >= 2) {
+      throw new BadRequestException(
+        'You have reached 2 posts for today. Buy subscription to post more.'
+      );
+    }
+
+    const post = await prisma.post.create({
+      data: {
+        title: newPost.title,
+        content: newPost.content,
+        likes: newPost.likes || 0,
+        authorId
+      }
+    });
+
+    const user = await prisma.users.findUnique({ where: { id: authorId } });
+    if (!user) throw new BadRequestException('User not found');
+
+    const postsArray = Array.isArray(user.posts) ? user.posts : [];
+    postsArray.push({
+      title: post.title,
+      content: post.content,
+      likes: post.likes
+    });
+
+    const updatedUser = await prisma.users.update({
+      where: { id: authorId },
+      data: {
+        posts: postsArray,
+        totalPosts: postsArray.length
+      }
+    });
+
+    return { post, updatedUser };
+  });
+}
+
 
   async findAll() {
     return await this.prisma.client.post.findMany();

@@ -3,10 +3,9 @@ import { Module, forwardRef } from '@nestjs/common';
 import { StripeService } from './stripe.service';
 import { StripeController } from './stripe.controller';
 import { ConfigModule } from '@nestjs/config';
-import { PaymentModule } from '@/payment/payment.module';
 
 @Module({
-  imports: [ConfigModule, forwardRef(() => PaymentModule)],
+  imports: [ConfigModule],
   controllers: [StripeController],
   providers: [StripeService],
   exports: [StripeService],

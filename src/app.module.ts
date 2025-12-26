@@ -9,11 +9,10 @@ import { LikesModule } from './likes/likes.module';
 import { CommentModule } from './comment/comment.module';
 import { AdminModule } from './admin/admin.module';
 import { StripeModule } from './stripe/stripe.module';
-import { PaymentModule } from './payment/payment.module';
 
 @Global()
 @Module({
-  imports: [AuthModule, PrismaModule, UsersModule, PostModule, LikesModule, CommentModule, AdminModule, StripeModule, PaymentModule],
+  imports: [AuthModule, PrismaModule, UsersModule, PostModule, LikesModule, CommentModule, AdminModule, StripeModule],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -47,6 +47,9 @@ export type UsersMinAggregateOutputType = {
   createdAt: Date | null
   updatedAt: Date | null
   isblocked: boolean | null
+  otp: string | null
+  otpExpiresAt: Date | null
+  isEmailVerified: boolean | null
 }
 
 export type UsersMaxAggregateOutputType = {
@@ -60,6 +63,9 @@ export type UsersMaxAggregateOutputType = {
   createdAt: Date | null
   updatedAt: Date | null
   isblocked: boolean | null
+  otp: string | null
+  otpExpiresAt: Date | null
+  isEmailVerified: boolean | null
 }
 
 export type UsersCountAggregateOutputType = {
@@ -75,6 +81,9 @@ export type UsersCountAggregateOutputType = {
   createdAt: number
   updatedAt: number
   isblocked: number
+  otp: number
+  otpExpiresAt: number
+  isEmailVerified: number
   _all: number
 }
 
@@ -100,6 +109,9 @@ export type UsersMinAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   isblocked?: true
+  otp?: true
+  otpExpiresAt?: true
+  isEmailVerified?: true
 }
 
 export type UsersMaxAggregateInputType = {
@@ -113,6 +125,9 @@ export type UsersMaxAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   isblocked?: true
+  otp?: true
+  otpExpiresAt?: true
+  isEmailVerified?: true
 }
 
 export type UsersCountAggregateInputType = {
@@ -128,6 +143,9 @@ export type UsersCountAggregateInputType = {
   createdAt?: true
   updatedAt?: true
   isblocked?: true
+  otp?: true
+  otpExpiresAt?: true
+  isEmailVerified?: true
   _all?: true
 }
 
@@ -230,6 +248,9 @@ export type UsersGroupByOutputType = {
   createdAt: Date
   updatedAt: Date
   isblocked: boolean
+  otp: string | null
+  otpExpiresAt: Date | null
+  isEmailVerified: boolean
   _count: UsersCountAggregateOutputType | null
   _avg: UsersAvgAggregateOutputType | null
   _sum: UsersSumAggregateOutputType | null
@@ -268,6 +289,9 @@ export type UsersWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Users"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Users"> | Date | string
   isblocked?: Prisma.BoolFilter<"Users"> | boolean
+  otp?: Prisma.StringNullableFilter<"Users"> | string | null
+  otpExpiresAt?: Prisma.DateTimeNullableFilter<"Users"> | Date | string | null
+  isEmailVerified?: Prisma.BoolFilter<"Users"> | boolean
 }
 
 export type UsersOrderByWithRelationInput = {
@@ -283,6 +307,9 @@ export type UsersOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   isblocked?: Prisma.SortOrder
+  otp?: Prisma.SortOrderInput | Prisma.SortOrder
+  otpExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  isEmailVerified?: Prisma.SortOrder
 }
 
 export type UsersWhereUniqueInput = Prisma.AtLeast<{
@@ -301,6 +328,9 @@ export type UsersWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Users"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Users"> | Date | string
   isblocked?: Prisma.BoolFilter<"Users"> | boolean
+  otp?: Prisma.StringNullableFilter<"Users"> | string | null
+  otpExpiresAt?: Prisma.DateTimeNullableFilter<"Users"> | Date | string | null
+  isEmailVerified?: Prisma.BoolFilter<"Users"> | boolean
 }, "id" | "email">
 
 export type UsersOrderByWithAggregationInput = {
@@ -316,6 +346,9 @@ export type UsersOrderByWithAggregationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   isblocked?: Prisma.SortOrder
+  otp?: Prisma.SortOrderInput | Prisma.SortOrder
+  otpExpiresAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  isEmailVerified?: Prisma.SortOrder
   _count?: Prisma.UsersCountOrderByAggregateInput
   _avg?: Prisma.UsersAvgOrderByAggregateInput
   _max?: Prisma.UsersMaxOrderByAggregateInput
@@ -339,6 +372,9 @@ export type UsersScalarWhereWithAggregatesInput = {
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Users"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Users"> | Date | string
   isblocked?: Prisma.BoolWithAggregatesFilter<"Users"> | boolean
+  otp?: Prisma.StringNullableWithAggregatesFilter<"Users"> | string | null
+  otpExpiresAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Users"> | Date | string | null
+  isEmailVerified?: Prisma.BoolWithAggregatesFilter<"Users"> | boolean
 }
 
 export type UsersCreateInput = {
@@ -354,6 +390,9 @@ export type UsersCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   isblocked?: boolean
+  otp?: string | null
+  otpExpiresAt?: Date | string | null
+  isEmailVerified?: boolean
 }
 
 export type UsersUncheckedCreateInput = {
@@ -369,6 +408,9 @@ export type UsersUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   isblocked?: boolean
+  otp?: string | null
+  otpExpiresAt?: Date | string | null
+  isEmailVerified?: boolean
 }
 
 export type UsersUpdateInput = {
@@ -384,6 +426,9 @@ export type UsersUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isblocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  otpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UsersUncheckedUpdateInput = {
@@ -399,6 +444,9 @@ export type UsersUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isblocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  otpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UsersCreateManyInput = {
@@ -414,6 +462,9 @@ export type UsersCreateManyInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   isblocked?: boolean
+  otp?: string | null
+  otpExpiresAt?: Date | string | null
+  isEmailVerified?: boolean
 }
 
 export type UsersUpdateManyMutationInput = {
@@ -429,6 +480,9 @@ export type UsersUpdateManyMutationInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isblocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  otpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UsersUncheckedUpdateManyInput = {
@@ -444,6 +498,9 @@ export type UsersUncheckedUpdateManyInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isblocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  otp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  otpExpiresAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
 }
 
 export type UsersCountOrderByAggregateInput = {
@@ -459,6 +516,9 @@ export type UsersCountOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   isblocked?: Prisma.SortOrder
+  otp?: Prisma.SortOrder
+  otpExpiresAt?: Prisma.SortOrder
+  isEmailVerified?: Prisma.SortOrder
 }
 
 export type UsersAvgOrderByAggregateInput = {
@@ -477,6 +537,9 @@ export type UsersMaxOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   isblocked?: Prisma.SortOrder
+  otp?: Prisma.SortOrder
+  otpExpiresAt?: Prisma.SortOrder
+  isEmailVerified?: Prisma.SortOrder
 }
 
 export type UsersMinOrderByAggregateInput = {
@@ -490,6 +553,9 @@ export type UsersMinOrderByAggregateInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   isblocked?: Prisma.SortOrder
+  otp?: Prisma.SortOrder
+  otpExpiresAt?: Prisma.SortOrder
+  isEmailVerified?: Prisma.SortOrder
 }
 
 export type UsersSumOrderByAggregateInput = {
@@ -503,6 +569,14 @@ export type EnumRoleFieldUpdateOperationsInput = {
 
 export type BoolFieldUpdateOperationsInput = {
   set?: boolean
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
 }
 
 
@@ -520,6 +594,9 @@ export type UsersSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   createdAt?: boolean
   updatedAt?: boolean
   isblocked?: boolean
+  otp?: boolean
+  otpExpiresAt?: boolean
+  isEmailVerified?: boolean
 }, ExtArgs["result"]["users"]>
 
 export type UsersSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -535,6 +612,9 @@ export type UsersSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   createdAt?: boolean
   updatedAt?: boolean
   isblocked?: boolean
+  otp?: boolean
+  otpExpiresAt?: boolean
+  isEmailVerified?: boolean
 }, ExtArgs["result"]["users"]>
 
 export type UsersSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -550,6 +630,9 @@ export type UsersSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   createdAt?: boolean
   updatedAt?: boolean
   isblocked?: boolean
+  otp?: boolean
+  otpExpiresAt?: boolean
+  isEmailVerified?: boolean
 }, ExtArgs["result"]["users"]>
 
 export type UsersSelectScalar = {
@@ -565,9 +648,12 @@ export type UsersSelectScalar = {
   createdAt?: boolean
   updatedAt?: boolean
   isblocked?: boolean
+  otp?: boolean
+  otpExpiresAt?: boolean
+  isEmailVerified?: boolean
 }
 
-export type UsersOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "posts" | "totalPosts" | "likes" | "totalLikes" | "role" | "createdAt" | "updatedAt" | "isblocked", ExtArgs["result"]["users"]>
+export type UsersOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "posts" | "totalPosts" | "likes" | "totalLikes" | "role" | "createdAt" | "updatedAt" | "isblocked" | "otp" | "otpExpiresAt" | "isEmailVerified", ExtArgs["result"]["users"]>
 
 export type $UsersPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Users"
@@ -585,6 +671,9 @@ export type $UsersPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     createdAt: Date
     updatedAt: Date
     isblocked: boolean
+    otp: string | null
+    otpExpiresAt: Date | null
+    isEmailVerified: boolean
   }, ExtArgs["result"]["users"]>
   composites: {}
 }
@@ -1020,6 +1109,9 @@ export interface UsersFieldRefs {
   readonly createdAt: Prisma.FieldRef<"Users", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Users", 'DateTime'>
   readonly isblocked: Prisma.FieldRef<"Users", 'Boolean'>
+  readonly otp: Prisma.FieldRef<"Users", 'String'>
+  readonly otpExpiresAt: Prisma.FieldRef<"Users", 'DateTime'>
+  readonly isEmailVerified: Prisma.FieldRef<"Users", 'Boolean'>
 }
     
 

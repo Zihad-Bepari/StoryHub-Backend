@@ -1,5 +1,5 @@
 // stripe.controller.ts
-import { Body, Controller, Post, Get, Param, BadRequestException, Req } from '@nestjs/common';
+import { Body, Controller, Post, Get,Headers, Param, BadRequestException, Req, Res } from '@nestjs/common';
 import { StripeService } from './stripe.service';
 import { ApiTags, ApiBody, ApiResponse, ApiParam, ApiProperty } from '@nestjs/swagger';
 
@@ -57,10 +57,24 @@ export class StripeController {
   })
   @ApiResponse({ status: 200, description: 'Webhook received successfully' })
   @ApiResponse({ status: 400, description: 'Invalid event payload' })
-  async webhook(@Req() req: any) {
-    const event = req.body;
-    if (!event || !event.type) throw new BadRequestException('Invalid event');
-
-    return this.stripeService.handleWebhook(event);
+  async webhook(
+    @Req() req: any,
+    @Headers('Stripe-signature') sig: string,
+    @Res() res:Response
+  ) {
+    
+   const endpointSecret: string | undefined =
+      process.env.STRIPE_WEBHOOK_SECRET_KEY;
+    if (!endpointSecret) {
+      throw new Error('Missing Stripe Webhook Secret!');
+    }
+  const rawBody: Buffer = req.body;     
+  const result = await this.stripeService.handleWebhook(
+      rawBody,
+      sig,
+      endpointSecret,
+    );
+    
+    return result;
   }
 }

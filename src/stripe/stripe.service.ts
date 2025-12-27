@@ -53,27 +53,35 @@ export class StripeService {
     }
   }
 
-  async handleWebhook(payload: any) {
-    const event = payload;
+   async handleWebhook(rawBody: Buffer, sig: string, endpointSecret: string) {
+    let event: Stripe.Event;
 
+    try {
+      // Verify webhook signature
+      event = this.stripe.webhooks.constructEvent(rawBody, sig, endpointSecret);
+    } catch (err: any) {
+      console.error('⚠️ Webhook signature verification failed.', err.message);
+      throw new Error('Invalid signature');
+    }
+
+    // Get payment intent data
     const paymentData = event.data?.object as Stripe.PaymentIntent;
 
     switch (event.type) {
       case 'payment_intent.succeeded':
         console.log('✅ Payment succeeded:', paymentData.id);
 
-        // Store in Payment table
+        // Upsert payment into DB
         await this.prisma.client.payment.upsert({
           where: { stripePaymentId: paymentData.id },
           update: { status: PaymentStatus.SUCCEEDED },
           create: {
             userId: paymentData.metadata?.email || 'unknown',
             stripePaymentId: paymentData.id,
-            amount: paymentData.amount / 100,
+            amount: paymentData.amount / 100, // convert cents to dollars
             status: PaymentStatus.SUCCEEDED,
           },
         });
-
         break;
 
       case 'payment_intent.payment_failed':
@@ -83,17 +91,16 @@ export class StripeService {
           where: { stripePaymentId: paymentData.id },
           update: { status: PaymentStatus.FAILED },
           create: {
-            userId: paymentData.metadata?.userId || 'unknown',
+            userId: paymentData.metadata?.email || 'unknown',
             stripePaymentId: paymentData.id,
             amount: paymentData.amount / 100,
             status: PaymentStatus.FAILED,
           },
         });
-
         break;
 
       default:
-        console.log('Unhandled event:', event.type);
+        console.log('⚠️ Unhandled event type:', event.type);
     }
 
     return { received: true };

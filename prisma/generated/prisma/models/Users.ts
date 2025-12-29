@@ -41,9 +41,9 @@ export type UsersMinAggregateOutputType = {
   name: string | null
   email: string | null
   password: string | null
+  role: $Enums.Role | null
   totalPosts: number | null
   totalLikes: number | null
-  role: $Enums.Role | null
   createdAt: Date | null
   updatedAt: Date | null
   isblocked: boolean | null
@@ -57,9 +57,9 @@ export type UsersMaxAggregateOutputType = {
   name: string | null
   email: string | null
   password: string | null
+  role: $Enums.Role | null
   totalPosts: number | null
   totalLikes: number | null
-  role: $Enums.Role | null
   createdAt: Date | null
   updatedAt: Date | null
   isblocked: boolean | null
@@ -73,11 +73,11 @@ export type UsersCountAggregateOutputType = {
   name: number
   email: number
   password: number
+  role: number
   posts: number
   totalPosts: number
   likes: number
   totalLikes: number
-  role: number
   createdAt: number
   updatedAt: number
   isblocked: number
@@ -103,9 +103,9 @@ export type UsersMinAggregateInputType = {
   name?: true
   email?: true
   password?: true
+  role?: true
   totalPosts?: true
   totalLikes?: true
-  role?: true
   createdAt?: true
   updatedAt?: true
   isblocked?: true
@@ -119,9 +119,9 @@ export type UsersMaxAggregateInputType = {
   name?: true
   email?: true
   password?: true
+  role?: true
   totalPosts?: true
   totalLikes?: true
-  role?: true
   createdAt?: true
   updatedAt?: true
   isblocked?: true
@@ -135,11 +135,11 @@ export type UsersCountAggregateInputType = {
   name?: true
   email?: true
   password?: true
+  role?: true
   posts?: true
   totalPosts?: true
   likes?: true
   totalLikes?: true
-  role?: true
   createdAt?: true
   updatedAt?: true
   isblocked?: true
@@ -240,11 +240,11 @@ export type UsersGroupByOutputType = {
   name: string
   email: string
   password: string
+  role: $Enums.Role
   posts: runtime.JsonValue
   totalPosts: number
   likes: runtime.JsonValue
   totalLikes: number
-  role: $Enums.Role
   createdAt: Date
   updatedAt: Date
   isblocked: boolean
@@ -281,11 +281,11 @@ export type UsersWhereInput = {
   name?: Prisma.StringFilter<"Users"> | string
   email?: Prisma.StringFilter<"Users"> | string
   password?: Prisma.StringFilter<"Users"> | string
+  role?: Prisma.EnumRoleFilter<"Users"> | $Enums.Role
   posts?: Prisma.JsonFilter<"Users">
   totalPosts?: Prisma.IntFilter<"Users"> | number
   likes?: Prisma.JsonFilter<"Users">
   totalLikes?: Prisma.IntFilter<"Users"> | number
-  role?: Prisma.EnumRoleFilter<"Users"> | $Enums.Role
   createdAt?: Prisma.DateTimeFilter<"Users"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Users"> | Date | string
   isblocked?: Prisma.BoolFilter<"Users"> | boolean
@@ -299,11 +299,11 @@ export type UsersOrderByWithRelationInput = {
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   posts?: Prisma.SortOrder
   totalPosts?: Prisma.SortOrder
   likes?: Prisma.SortOrder
   totalLikes?: Prisma.SortOrder
-  role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   isblocked?: Prisma.SortOrder
@@ -320,11 +320,11 @@ export type UsersWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.UsersWhereInput | Prisma.UsersWhereInput[]
   name?: Prisma.StringFilter<"Users"> | string
   password?: Prisma.StringFilter<"Users"> | string
+  role?: Prisma.EnumRoleFilter<"Users"> | $Enums.Role
   posts?: Prisma.JsonFilter<"Users">
   totalPosts?: Prisma.IntFilter<"Users"> | number
   likes?: Prisma.JsonFilter<"Users">
   totalLikes?: Prisma.IntFilter<"Users"> | number
-  role?: Prisma.EnumRoleFilter<"Users"> | $Enums.Role
   createdAt?: Prisma.DateTimeFilter<"Users"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Users"> | Date | string
   isblocked?: Prisma.BoolFilter<"Users"> | boolean
@@ -338,11 +338,11 @@ export type UsersOrderByWithAggregationInput = {
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   posts?: Prisma.SortOrder
   totalPosts?: Prisma.SortOrder
   likes?: Prisma.SortOrder
   totalLikes?: Prisma.SortOrder
-  role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   isblocked?: Prisma.SortOrder
@@ -364,11 +364,11 @@ export type UsersScalarWhereWithAggregatesInput = {
   name?: Prisma.StringWithAggregatesFilter<"Users"> | string
   email?: Prisma.StringWithAggregatesFilter<"Users"> | string
   password?: Prisma.StringWithAggregatesFilter<"Users"> | string
+  role?: Prisma.EnumRoleWithAggregatesFilter<"Users"> | $Enums.Role
   posts?: Prisma.JsonWithAggregatesFilter<"Users">
   totalPosts?: Prisma.IntWithAggregatesFilter<"Users"> | number
   likes?: Prisma.JsonWithAggregatesFilter<"Users">
   totalLikes?: Prisma.IntWithAggregatesFilter<"Users"> | number
-  role?: Prisma.EnumRoleWithAggregatesFilter<"Users"> | $Enums.Role
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Users"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Users"> | Date | string
   isblocked?: Prisma.BoolWithAggregatesFilter<"Users"> | boolean
@@ -382,11 +382,11 @@ export type UsersCreateInput = {
   name: string
   email: string
   password: string
+  role?: $Enums.Role
   posts?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalPosts?: number
   likes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalLikes?: number
-  role?: $Enums.Role
   createdAt?: Date | string
   updatedAt?: Date | string
   isblocked?: boolean
@@ -400,11 +400,11 @@ export type UsersUncheckedCreateInput = {
   name: string
   email: string
   password: string
+  role?: $Enums.Role
   posts?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalPosts?: number
   likes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalLikes?: number
-  role?: $Enums.Role
   createdAt?: Date | string
   updatedAt?: Date | string
   isblocked?: boolean
@@ -418,11 +418,11 @@ export type UsersUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   posts?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalPosts?: Prisma.IntFieldUpdateOperationsInput | number
   likes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalLikes?: Prisma.IntFieldUpdateOperationsInput | number
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isblocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -436,11 +436,11 @@ export type UsersUncheckedUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   posts?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalPosts?: Prisma.IntFieldUpdateOperationsInput | number
   likes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalLikes?: Prisma.IntFieldUpdateOperationsInput | number
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isblocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -454,11 +454,11 @@ export type UsersCreateManyInput = {
   name: string
   email: string
   password: string
+  role?: $Enums.Role
   posts?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalPosts?: number
   likes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalLikes?: number
-  role?: $Enums.Role
   createdAt?: Date | string
   updatedAt?: Date | string
   isblocked?: boolean
@@ -472,11 +472,11 @@ export type UsersUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   posts?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalPosts?: Prisma.IntFieldUpdateOperationsInput | number
   likes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalLikes?: Prisma.IntFieldUpdateOperationsInput | number
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isblocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -490,11 +490,11 @@ export type UsersUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   posts?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalPosts?: Prisma.IntFieldUpdateOperationsInput | number
   likes?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   totalLikes?: Prisma.IntFieldUpdateOperationsInput | number
-  role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   isblocked?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -508,11 +508,11 @@ export type UsersCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   posts?: Prisma.SortOrder
   totalPosts?: Prisma.SortOrder
   likes?: Prisma.SortOrder
   totalLikes?: Prisma.SortOrder
-  role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   isblocked?: Prisma.SortOrder
@@ -531,9 +531,9 @@ export type UsersMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   totalPosts?: Prisma.SortOrder
   totalLikes?: Prisma.SortOrder
-  role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   isblocked?: Prisma.SortOrder
@@ -547,9 +547,9 @@ export type UsersMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
+  role?: Prisma.SortOrder
   totalPosts?: Prisma.SortOrder
   totalLikes?: Prisma.SortOrder
-  role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   isblocked?: Prisma.SortOrder
@@ -586,11 +586,11 @@ export type UsersSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   name?: boolean
   email?: boolean
   password?: boolean
+  role?: boolean
   posts?: boolean
   totalPosts?: boolean
   likes?: boolean
   totalLikes?: boolean
-  role?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   isblocked?: boolean
@@ -604,11 +604,11 @@ export type UsersSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   name?: boolean
   email?: boolean
   password?: boolean
+  role?: boolean
   posts?: boolean
   totalPosts?: boolean
   likes?: boolean
   totalLikes?: boolean
-  role?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   isblocked?: boolean
@@ -622,11 +622,11 @@ export type UsersSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   name?: boolean
   email?: boolean
   password?: boolean
+  role?: boolean
   posts?: boolean
   totalPosts?: boolean
   likes?: boolean
   totalLikes?: boolean
-  role?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   isblocked?: boolean
@@ -640,11 +640,11 @@ export type UsersSelectScalar = {
   name?: boolean
   email?: boolean
   password?: boolean
+  role?: boolean
   posts?: boolean
   totalPosts?: boolean
   likes?: boolean
   totalLikes?: boolean
-  role?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   isblocked?: boolean
@@ -653,7 +653,7 @@ export type UsersSelectScalar = {
   isEmailVerified?: boolean
 }
 
-export type UsersOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "posts" | "totalPosts" | "likes" | "totalLikes" | "role" | "createdAt" | "updatedAt" | "isblocked" | "otp" | "otpExpiresAt" | "isEmailVerified", ExtArgs["result"]["users"]>
+export type UsersOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "role" | "posts" | "totalPosts" | "likes" | "totalLikes" | "createdAt" | "updatedAt" | "isblocked" | "otp" | "otpExpiresAt" | "isEmailVerified", ExtArgs["result"]["users"]>
 
 export type $UsersPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Users"
@@ -663,11 +663,11 @@ export type $UsersPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     name: string
     email: string
     password: string
+    role: $Enums.Role
     posts: runtime.JsonValue
     totalPosts: number
     likes: runtime.JsonValue
     totalLikes: number
-    role: $Enums.Role
     createdAt: Date
     updatedAt: Date
     isblocked: boolean
@@ -1101,11 +1101,11 @@ export interface UsersFieldRefs {
   readonly name: Prisma.FieldRef<"Users", 'String'>
   readonly email: Prisma.FieldRef<"Users", 'String'>
   readonly password: Prisma.FieldRef<"Users", 'String'>
+  readonly role: Prisma.FieldRef<"Users", 'Role'>
   readonly posts: Prisma.FieldRef<"Users", 'Json'>
   readonly totalPosts: Prisma.FieldRef<"Users", 'Int'>
   readonly likes: Prisma.FieldRef<"Users", 'Json'>
   readonly totalLikes: Prisma.FieldRef<"Users", 'Int'>
-  readonly role: Prisma.FieldRef<"Users", 'Role'>
   readonly createdAt: Prisma.FieldRef<"Users", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Users", 'DateTime'>
   readonly isblocked: Prisma.FieldRef<"Users", 'Boolean'>

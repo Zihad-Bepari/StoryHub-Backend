@@ -1,7 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { AdminService } from './admin.service';
+import { AuthGuard } from '@nestjs/passport';
+
 
 @Controller('admin')
 export class AdminController {
@@ -10,11 +12,10 @@ export class AdminController {
          private readonly adminService: AdminService,
   ) {}
  
- @Get()
-  findAll() {
-    return this.adminService.findAll();
-  }
-
+@Get('AllUserInformation')
+findAll() {
+  return this.adminService.findAll();
+}
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.adminService.findOne(id);

@@ -45,7 +45,7 @@ export class AuthController {
     return this.authService.verifyForgotOtp(otp.otp)
   }
   
-   @Post('reset-password')
+  @Post('reset-password')
   @ApiOperation({ summary: 'Reset password without OTP or ID' })
   async resetPassword(@Body() dto: ResetPasswordDto) {
     return this.authService.resetPassword(dto.password)
@@ -56,7 +56,7 @@ export class AuthController {
       return this.authService.signin(dto)
    }
    
-
+  @Get()
   @ApiBearerAuth()
   @UseGuards(AuthGuard('jwt'))
   async getProfile(@Req() req: JwtRequest) {

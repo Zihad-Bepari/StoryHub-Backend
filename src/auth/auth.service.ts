@@ -120,7 +120,7 @@ async signin(dto: Auth){
     const token = jwt.sign(
     { userId: user.id, email: user.email },
     process.env.JWT_SECRET || 'StoryHub',
-    { expiresIn: '1d' },
+    { expiresIn: '5m' },
   );
     return { message: 'Signin successful', token, id:user.id,email:user.email };
 }

@@ -166,6 +166,41 @@ async signin(dto: Auth){
     };
   }
   
+   async googleLogin(req: any) {
+    if (!req.user) {
+      return { message: 'No user from Google' };
+    }
+
+    // Optional: Save user in DB
+    let user = await this.prisma.client.users.findUnique({
+      where: { email: req.user.email },
+    });
+
+    if (!user) {
+      user = await this.prisma.client.users.create({
+        data: {
+          name: `${req.user.firstName} ${req.user.lastName}`,
+          email: req.user.email,
+          isEmailVerified: true,
+          password: "",
+        },
+      });
+    }
+
+    // Generate JWT token
+    const payload = { sub: user.id, email: user.email };
+    const token = jwt.sign(
+    { payload },
+    process.env.JWT_SECRET || 'StoryHub',
+    { expiresIn: '5m' },)
+
+    return {
+      message: 'User info from Google',
+      user,
+      token,
+    };
+  }
+
   async getProfileByEmail(email: string) {
     const user = await this.prisma.client.users.findUnique({
       where: { email },

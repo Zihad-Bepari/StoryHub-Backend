@@ -1,9 +1,9 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, Req, UseGuards } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { Auth, CreateAuthDto, Otp, ResetPasswordDto, SendEmail } from './dto/create-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
 import { ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
+import { GoogleAuthGuard } from './strategy/google.guard';
 
 interface JwtRequest extends Request {
   user: {
@@ -51,10 +51,21 @@ export class AuthController {
     return this.authService.resetPassword(dto.password)
   }
   
-  @Post('Login')
-   signin(@Body() dto:Auth){
-      return this.authService.signin(dto)
-   }
+   @Get()
+  @UseGuards(AuthGuard('google'))
+  async googleAuth(@Req() req: any) { }
+
+   @Get('google')
+  @UseGuards(GoogleAuthGuard)
+  async googleLogin() {
+    // Passport will redirect automatically
+  }
+
+  @Get('google/callback')
+  @UseGuards(GoogleAuthGuard)
+  async googleCallback(@Req() req:any) {
+    return this.authService.googleLogin(req);
+  }
    
   @Get()
   @ApiBearerAuth()

@@ -51,14 +51,17 @@ export class AuthController {
     return this.authService.resetPassword(dto.password)
   }
   
-   @Get()
-  @UseGuards(AuthGuard('google'))
-  async googleAuth(@Req() req: any) { }
-
+   @Get('profile')
+  @ApiBearerAuth()
+  @UseGuards(AuthGuard('jwt'))
+  async getProfile(@Req() req: JwtRequest) {
+    const email = req.user.email;
+    return this.authService.getProfileByEmail(email);
+  }
+  
    @Get('google')
   @UseGuards(GoogleAuthGuard)
   async googleLogin() {
-    // Passport will redirect automatically
   }
 
   @Get('google/callback')
@@ -67,12 +70,4 @@ export class AuthController {
     return this.authService.googleLogin(req);
   }
    
-  @Get()
-  @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
-  async getProfile(@Req() req: JwtRequest) {
-    const email = req.user.email;
-    return this.authService.getProfileByEmail(email);
-  }
-
   }

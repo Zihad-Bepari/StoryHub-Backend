@@ -129,8 +129,12 @@ async signin(dto: Auth){
 
     await this.prisma.client.users.update({
     where: { id: user.id },
-    data: { refreshToken: Refresh_Token },
+    data: { refreshToken: Refresh_Token,
+            accessToken: Access_Token
+     },
   });
+  
+
     return{ 
       message: 
           'Signin successful',
@@ -236,5 +240,15 @@ async signin(dto: Auth){
 
     return user;
   }
+   
+   async logout(email: string) {
+    await this.prisma.client.users.update({
+      where: { email: email },
+      data: {
+        accessToken: null,
+      },
+    });
 
+    return { message: 'Logout successful' };
+  }
 }

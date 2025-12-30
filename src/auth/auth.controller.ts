@@ -70,4 +70,8 @@ export class AuthController {
     return this.authService.googleLogin(req);
   }
    
+  @Post('login')
+  async login(@Body() dto: Auth) {
+    return this.authService.signin(dto);  
   }
+}

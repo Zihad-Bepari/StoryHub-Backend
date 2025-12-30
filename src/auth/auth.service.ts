@@ -100,15 +100,13 @@ async signin(dto: Auth){
             HttpStatus.BAD_REQUEST,
         );
     }
-    
+  
     if (!user.isEmailVerified) {
       throw new HttpException(
         { message: "Please verify your email before login." },
         HttpStatus.FORBIDDEN,
       );
     }
-
-
     const passwordMatch = await bcrypt.compare(dto.password, user.password);
     if (!passwordMatch) {
       throw new HttpException(
@@ -117,12 +115,30 @@ async signin(dto: Auth){
           );
     }
     
-    const token = jwt.sign(
+    const Access_Token = jwt.sign(
     { userId: user.id, email: user.email },
     process.env.JWT_SECRET || 'StoryHub',
     { expiresIn: '5m' },
   );
-    return { message: 'Signin successful', token, id:user.id,email:user.email };
+
+   const Refresh_Token = jwt.sign(
+    { userId: user.id, email: user.email },
+    process.env.JWT_SECRET || 'StoryHub',
+    { expiresIn: '30d' },
+   );
+
+    await this.prisma.client.users.update({
+    where: { id: user.id },
+    data: { refreshToken: Refresh_Token },
+  });
+    return{ 
+      message: 
+          'Signin successful',
+          Access_Token, 
+          Refresh_Token, 
+          id:user.id,
+          email:user.email 
+    };
 }
 
  async forgetPassword(email: string) {

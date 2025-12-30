@@ -27,7 +27,9 @@ export class StripeController {
   @ApiResponse({ status: 200, description: 'Payment status retrieved successfully' })
   @ApiResponse({ status: 400, description: 'Invalid paymentIntentId' })
   async status(@Param('paymentIntentId') paymentIntentId: string) {
-    return this.stripeService.confirmPaymentStatus(paymentIntentId);
+    const ans = this.stripeService.confirmAndSavePayment(paymentIntentId);
+    console.log(ans);
+    return ans;
   }
 
   @Post('webhook')

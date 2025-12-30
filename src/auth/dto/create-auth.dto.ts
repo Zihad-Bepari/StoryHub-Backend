@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger"
-import { IsEmail, IsNotEmpty, IsOptional, IsString, MinLength } from "class-validator"
+import { IsEmail, IsNotEmpty, IsOptional, IsString, IsStrongPassword, Matches, MinLength, Validate } from "class-validator"
 import { Role } from "generated/prisma/enums"
-
+import { StrongPassword } from "decoretor/is-strong-password.decorator"
 export class CreateAuthDto {
         @ApiProperty({example: "ZIhad"})
         @IsString()
@@ -13,11 +13,12 @@ export class CreateAuthDto {
         @IsNotEmpty()
         email: string
         
-        @ApiProperty({example: "12345678"})
+        @ApiProperty({ example: "12345678" })
         @IsString()
         @IsNotEmpty()
-        password: string
-        
+        @Validate(StrongPassword)
+        password: string;
+
         @IsOptional()
         role?: Role
 }
@@ -57,5 +58,12 @@ export class ResetPasswordDto {
   @IsString()
   @MinLength(6, { message: 'Password must be at least 6 characters long' })
   @ApiProperty({ example: 'strongPassword123' })
+  @Matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
+      {
+          message:
+              'Password must contain uppercase, lowercase, number and special character',
+      },
+  )
   password: string;
 }

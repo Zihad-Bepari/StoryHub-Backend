@@ -10,26 +10,39 @@ export class UsersService {
 
   }
   
- async update(id: string, updateUserDto: UpdateUserDto) {
-    const userExists = await this.prisma.client.users.findUnique({ where: { id } });
-    if (!userExists) throw new NotFoundException(`User with ID ${id} not found`);
-
-    const updatedUser = await this.prisma.client.users.update({
-      where: { id },
-      data: updateUserDto,
+  async updateUser(userId: string, dto: UpdateUserDto) {
+    const user = await this.prisma.client.users.findUnique({
+      where: { id: userId },
     });
-    console.log('User updated:', updatedUser);
-    return updatedUser;
+
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+
+    return this.prisma.client.users.update({
+      where: { id: userId },
+      data: {
+        ...dto,
+      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        role: true,
+        isblocked: true,
+        updatedAt: true,
+      },
+    });
   }
 
-  async remove(id: string) {
-      console.log("Deleted id : ");
 
-     const userExists = await this.prisma.client.users.findUnique({ where: { id } });
-    if (!userExists) throw new NotFoundException(`User with ID ${id} not found`);
+   async remove(id: string): Promise<{ message: string }> {
+    const user = await this.prisma.client.users.findUnique({ where: { id } });
+    if (!user) {
+      throw new NotFoundException(`User with id ${id} not found`);
+    }
 
-    const deletedUser = await this.prisma.client.users.delete({ where: { id } });
-    console.log('User deleted:', deletedUser);
-    return deletedUser;
+    await this.prisma.client.users.delete({ where: { id } });
+    return { message: `User with id ${id} deleted successfully` };
   }
 }

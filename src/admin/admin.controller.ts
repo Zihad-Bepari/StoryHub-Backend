@@ -3,8 +3,12 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@n
 import { PrismaService } from '@/common/prisma/prisma.service';
 import { AdminService } from './admin.service';
 import { AuthGuard } from '@nestjs/passport';
+import {Roles} from '../../decoretor/role.decoretor';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
-
+@ApiBearerAuth()
+@UseGuards(AuthGuard('jwt'))
+@Roles('ADMIN')
 @Controller('admin')
 export class AdminController {
   constructor(

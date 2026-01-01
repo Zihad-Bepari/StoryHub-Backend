@@ -51,6 +51,7 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  Bookmark: 'Bookmark',
   Likes: 'Likes',
   Payment: 'Payment',
   Post: 'Post',
@@ -71,6 +72,17 @@ export const TransactionIsolationLevel = {
 } as const
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+export const BookmarkScalarFieldEnum = {
+  id: 'id',
+  targetId: 'targetId',
+  targetType: 'targetType',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BookmarkScalarFieldEnum = (typeof BookmarkScalarFieldEnum)[keyof typeof BookmarkScalarFieldEnum]
 
 
 export const LikesScalarFieldEnum = {

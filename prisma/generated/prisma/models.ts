@@ -8,6 +8,7 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/Bookmark'
 export type * from './models/Likes'
 export type * from './models/Payment'
 export type * from './models/Post'

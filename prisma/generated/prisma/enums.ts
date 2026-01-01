@@ -9,6 +9,13 @@
 * 🟢 You can import this file directly.
 */
 
+export const BookmarkType = {
+  POST: 'POST'
+} as const
+
+export type BookmarkType = (typeof BookmarkType)[keyof typeof BookmarkType]
+
+
 export const PaymentStatus = {
   PENDING: 'PENDING',
   SUCCEEDED: 'SUCCEEDED',

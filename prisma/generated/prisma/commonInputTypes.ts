@@ -29,6 +29,13 @@ export type StringFilter<$PrismaModel = never> = {
   not?: Prisma.NestedStringFilter<$PrismaModel> | string
 }
 
+export type EnumBookmarkTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.BookmarkType | Prisma.EnumBookmarkTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.BookmarkType[] | Prisma.ListEnumBookmarkTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.BookmarkType[] | Prisma.ListEnumBookmarkTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumBookmarkTypeFilter<$PrismaModel> | $Enums.BookmarkType
+}
+
 export type DateTimeFilter<$PrismaModel = never> = {
   equals?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
   in?: Date[] | string[] | Prisma.ListDateTimeFieldRefInput<$PrismaModel>
@@ -56,6 +63,16 @@ export type StringWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedStringFilter<$PrismaModel>
   _max?: Prisma.NestedStringFilter<$PrismaModel>
+}
+
+export type EnumBookmarkTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.BookmarkType | Prisma.EnumBookmarkTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.BookmarkType[] | Prisma.ListEnumBookmarkTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.BookmarkType[] | Prisma.ListEnumBookmarkTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumBookmarkTypeWithAggregatesFilter<$PrismaModel> | $Enums.BookmarkType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumBookmarkTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumBookmarkTypeFilter<$PrismaModel>
 }
 
 export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -301,6 +318,13 @@ export type NestedStringFilter<$PrismaModel = never> = {
   not?: Prisma.NestedStringFilter<$PrismaModel> | string
 }
 
+export type NestedEnumBookmarkTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.BookmarkType | Prisma.EnumBookmarkTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.BookmarkType[] | Prisma.ListEnumBookmarkTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.BookmarkType[] | Prisma.ListEnumBookmarkTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumBookmarkTypeFilter<$PrismaModel> | $Enums.BookmarkType
+}
+
 export type NestedDateTimeFilter<$PrismaModel = never> = {
   equals?: Date | string | Prisma.DateTimeFieldRefInput<$PrismaModel>
   in?: Date[] | string[] | Prisma.ListDateTimeFieldRefInput<$PrismaModel>
@@ -338,6 +362,16 @@ export type NestedIntFilter<$PrismaModel = never> = {
   gt?: number | Prisma.IntFieldRefInput<$PrismaModel>
   gte?: number | Prisma.IntFieldRefInput<$PrismaModel>
   not?: Prisma.NestedIntFilter<$PrismaModel> | number
+}
+
+export type NestedEnumBookmarkTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.BookmarkType | Prisma.EnumBookmarkTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.BookmarkType[] | Prisma.ListEnumBookmarkTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.BookmarkType[] | Prisma.ListEnumBookmarkTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumBookmarkTypeWithAggregatesFilter<$PrismaModel> | $Enums.BookmarkType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumBookmarkTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumBookmarkTypeFilter<$PrismaModel>
 }
 
 export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
